@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 0 Maze</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="level11.css">
+</head>
+<body>
+
+    <style>
+        .wall {
+            background-color: #343a40; /* Bootstrap's dark gray */
+        }
+        .path, .player, .goal {
+            background-color: #f8f9fa; /* Bootstrap's light gray */
+        }
+        .player {
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+    
+        }
+        .goal {
+            background-color: gold;
+        }
+    </style>
+
+<div class="container mt-3">
+    <div class="row">
+        <!-- First Column: Maze -->
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header">Maze</div>
+                <div class="card-body">
+                    <div id="maze" style="max-width: 100%; display: grid; grid-template-columns: repeat(10, 40px); grid-gap: 2px;">
+                        <!-- Maze will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Column: Command Sequence and Control Actions -->
+        <div class="col-lg-3">
+            <!-- Command Sequence Card -->
+            <div class="card mb-3">
+                <div class="card-header">Command Sequence</div>
+                <ul class="list-group list-group-flush" id="command-list">
+                    <!-- Commands will be listed here -->
+                </ul>
+            </div>
+
+            <!-- Control Actions Card -->
+            <div class="card">
+                <div class="card-header">Control Actions</div>
+                <div class="card-body">
+                    <button class="btn btn-dark mb-2" onclick="runCommands()">Execute Commands</button>
+                    <button class="btn btn-warning mb-2" onclick="repeatUntilGoal()">Repeat Until Goal</button>
+                    <button class="btn btn-danger" onclick="resetMaze()">Reset Maze</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Column: Controls -->
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-header">Controls</div>
+                <div class="card-body" id="command-builder">
+                    <!-- Regular Commands Section -->
+                    <div class="mb-4">
+                        <h5 class="mb-3">Regular Commands</h5>
+                        <button class="btn btn-primary mr-2 mb-2" onclick="addCommand('moveforward')">Move Forward</button>
+                        <button class="btn btn-secondary mr-2 mb-2" onclick="addCommand('turnleft')">Turn Left</button>
+                        <button class="btn btn-secondary mb-2" onclick="addCommand('turnright')">Turn Right</button>
+                    </div>
+
+                    <!-- Conditional Commands Section -->
+                    <div>
+                        <h5 class="mb-3">Conditional Commands</h5>
+                        <!-- Condition Dropdown -->
+                        <select id="condition-dropdown" class="custom-select custom-select-md mb-2">
+                            <option value="">Select Condition</option>
+                            <option value="pathAhead">Path Ahead</option>
+                            <option value="pathLeft">Path Left</option>
+                            <option value="pathRight">Path Right</option>
+                        </select>
+                        
+                        <!-- Command Dropdown -->
+                        <select id="command-dropdown" class="custom-select custom-select-md mb-2">
+                            <option value="">Select Command</option>
+                            <option value="moveforward">Move Forward</option>
+                            <option value="turnleft">Turn Left</option>
+                            <option value="turnight">Turn Right</option>
+                        </select>
+                        
+                        <!-- Else Command Dropdown -->
+                        <select id="else-command-dropdown" class="custom-select custom-select-md mb-2">
+                            <option value="">Select Else Command</option>
+                            <option value="moveforward">Move Forward</option>
+                            <option value="turnleft">Turn Left</option>
+                            <option value="turnright">Turn Right</option>
+                        </select>
+                        
+                        <button class="btn btn-info mb-2" onclick="addIfCommand()">Add If Command</button>
+                        <button class="btn btn-info mb-2" onclick="addIfElseCommand()">Add If-Else Command</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="level0.js"></script>
+</body>
+</html>
